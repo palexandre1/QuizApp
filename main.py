@@ -1,6 +1,6 @@
 from typing import Union
-
 from fastapi import FastAPI
+from data import quizzes
 
 app = FastAPI()
 
@@ -9,6 +9,9 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
+@app.get("/quizzes")
+def read_quizzes():
+    return quizzes
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
